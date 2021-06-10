@@ -13,15 +13,15 @@ void PLAYER::update(float time)
 {
 	// Animation
 	if (direction) // right
-	{ 
+	{
 		if (dx == 0 && onGround) // standing
-		{ 
+		{
 			sprite.setTextureRect(IntRect(int(Standing_frame) * 31.6, 41, 30, 40));
 			Standing_frame += 0.1;
 			if (Standing_frame > 6) Standing_frame -= 6;
 		}
 		else // moving
-		{  
+		{
 			if (onGround)
 				sprite.setTextureRect(IntRect(35 * int(Running_frame), 0, 37, 40));
 			else // jumping vertically
@@ -29,9 +29,9 @@ void PLAYER::update(float time)
 		}
 	}
 	else // left
-	{ 
+	{
 		if (dx == 0 && onGround) // standing
-		{ 
+		{
 			sprite.setTextureRect(IntRect(int(Standing_frame) * 31.6 + 31, 41, -31, 40));
 			Standing_frame += 0.1;
 			if (Standing_frame > 6) Standing_frame -= 6;
@@ -41,7 +41,7 @@ void PLAYER::update(float time)
 			if (onGround)
 				sprite.setTextureRect(IntRect(35 * int(Running_frame) + 37, 0, -37, 40));
 			else // jumping vertically
-				sprite.setTextureRect(IntRect(32, 0, -32, 40)); 
+				sprite.setTextureRect(IntRect(32, 0, -32, 40));
 		}
 	}
 

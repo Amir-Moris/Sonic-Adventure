@@ -1,11 +1,9 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
 #include <sstream>
-#include <fstream>
 #include "Play_window.h"
 #include "Drawing_Map.h"
 #include "PLAYER.h"
-#include "End.h"
 using namespace std;
 using namespace sf;
 
@@ -30,7 +28,7 @@ Play_window::Play_window(RenderWindow& window)
 	Coin_spr.setTexture(Coin);
 
 	Drawing_Map MAP(TileMap);
-	
+
 	// show Score text
 	Text score;
 	Font font;
@@ -48,13 +46,8 @@ Play_window::Play_window(RenderWindow& window)
 	scoreCurrent.setStyle(Text::Regular);
 	scoreCurrent.setCharacterSize(20);
 
-	// save score
-	ifstream OutBestScore("High_Score.txt"); // get the best score from the file
-	OutBestScore >> Best_Score;
-	ofstream InBestScore("High_Score.txt"); // insert new best score in the file
-
 	float Frame_Rate = 0;
-	
+
 	while (window.isOpen())
 	{
 		Event event;
@@ -66,16 +59,6 @@ Play_window::Play_window(RenderWindow& window)
 		while (window.pollEvent(event))
 		{
 			if (event.type == Event::Closed || Keyboard::isKeyPressed(Keyboard::Escape)) {
-				window.close();
-			}
-			// finish game and save score
-			if (p.sprite.getPosition().x >= 2800) {
-				// score info
-				Best_Score = max(Best_Score, MAP.Player_Score); // update best score if the player scored higher
-				InBestScore << Best_Score;
-
-				RenderWindow end(VideoMode(600, 600), "Sonic Adventure", Style::Titlebar);
-				End score(end, MAP.Player_Score);
 				window.close();
 			}
 			// movement

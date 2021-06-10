@@ -16,10 +16,9 @@ End::End(RenderWindow& window, int curscore)
 	pic_spr.setTexture(pic);
 
 	Text curscore_text;
-
 	stringstream s;
 	s << curscore;
-	curscore_text.setString(s.str().c_str() );
+	curscore_text.setString(s.str());
 
 	curscore_text.setFont(font);
 	curscore_text.setFillColor(Color::White);

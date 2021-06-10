@@ -1,7 +1,10 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
-#include "Drawing_Map.h"
+#include <fstream>
 #include <SFML/Audio.hpp>
+#include "Drawing_Map.h"
+#include "End.h"
+
 using namespace std;
 using namespace sf;
 
@@ -11,36 +14,40 @@ Drawing_Map::Drawing_Map(string TileMap[])
 	COIN.loadFromFile("sound/coin.ogg");
 	coin_sound.setBuffer(COIN);
 
-TileMap[0]  = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-TileMap[1]  = "a                                                                                                                                                                                                      a";
-TileMap[2]  = "a                                                                                                                                                                                                      a";
-TileMap[3]  = "a    A         A            A             A             A              A               A               A              A               A               A              A              A                  a";
-TileMap[4]  = "a         A           A            A             A              A              A               A               A              A               A               A              A               A         a";
-TileMap[5]  = "a              c c c c c c c c c              c c c c c c c c c            c c c c c c c c c         c c c c c c c c c                                                                                 a";
-TileMap[6]  = "a               c c c c c c c c c              c c c c c c c c c            c c c c c c c c c         c c c c c c c c c                                                                                a";
-TileMap[7]  = "a              c c c c c c c c c              c c c c c c c c c            c c c c c c c c c         c c c c c c c c c                                                                                 a";
-TileMap[8]  = "a               c c c c c c c c c              c c c c c c c c c            c c c c c c c c c         c c c c c c c c c                                                                                a";
-TileMap[9]  = "a                                                                                                                                                                                                      a";
-TileMap[10] = "a                                                                                                                                                                                                      a";
-TileMap[11] = "a                                                                                                                                                                                                      a";
-TileMap[12] = "a                                                                                                                                                                                                      a";
-TileMap[13] = "a                                                                                                                                                                                                      a";
-TileMap[14] = "a                                                                                                                                                                                                      a";
-TileMap[15] = "a                                                                                                                                                                                          M           a";
-TileMap[16] = "a                                                                                                                                                                                                      a";
-TileMap[17] = "a                                                                                                                                                                                                      a";
-TileMap[18] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-TileMap[19] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
-TileMap[20] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
-TileMap[21] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
-TileMap[22] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
-TileMap[23] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
-TileMap[24] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
-TileMap[25] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
-TileMap[26] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
+	TileMap[0] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+	TileMap[1] = "a                                                                                                                                                                                                      a";
+	TileMap[2] = "a                                                                                                                                                                                                      a";
+	TileMap[3] = "a    A         A            A             A             A              A               A               A              A               A               A              A              A                  a";
+	TileMap[4] = "a         A           A            A             A              A              A               A               A              A               A               A              A               A         a";
+	TileMap[5] = "a              c c c c c c c c c              c c c c c c c c c            c c c c c c c c c         c c c c c c c c c                                                                                 a";
+	TileMap[6] = "a               c c c c c c c c c              c c c c c c c c c            c c c c c c c c c         c c c c c c c c c                                                                                a";
+	TileMap[7] = "a              c c c c c c c c c              c c c c c c c c c            c c c c c c c c c         c c c c c c c c c                                                                                 a";
+	TileMap[8] = "a               c c c c c c c c c              c c c c c c c c c            c c c c c c c c c         c c c c c c c c c                                                                                a";
+	TileMap[9] = "a                                                                                                                                                                                                      a";
+	TileMap[10] = "a                                                                                                                                                                                                      a";
+	TileMap[11] = "a                                                                                                                                                                                                      a";
+	TileMap[12] = "a                                                                                                                                                                                                      a";
+	TileMap[13] = "a                                                                                                                                                                                                      a";
+	TileMap[14] = "a                                                                                                                                                                                                      a";
+	TileMap[15] = "a                                                                                                                                                                                          M           a";
+	TileMap[16] = "a                                                                                                                                                                                                      a";
+	TileMap[17] = "a                                                                                                                                                                                                      a";
+	TileMap[18] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+	TileMap[19] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
+	TileMap[20] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
+	TileMap[21] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
+	TileMap[22] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
+	TileMap[23] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
+	TileMap[24] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
+	TileMap[25] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
+	TileMap[26] = "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP";
 }
-void Drawing_Map::walkovermap(RenderWindow& window, string TileMap[], Sprite tile, Sprite coins, View& view, Sprite sonic,Sprite finishcoin)
+void Drawing_Map::walkovermap(RenderWindow& window, string TileMap[], Sprite tile, Sprite coins, View& view, Sprite sonic, Sprite finishcoin)
 {
+	ifstream OutBestScore("High_Score.txt"); // get the best score from the file
+	OutBestScore >> Best_Score;
+	ofstream InBestScore("High_Score.txt"); // insert new best score in the file
+
 	for (int i = 0; i < H; i++) // PRINTING MAP FUNCTION
 	{
 		for (int j = 0; j < W; j++)
@@ -70,11 +77,11 @@ void Drawing_Map::walkovermap(RenderWindow& window, string TileMap[], Sprite til
 				window.draw(tile);
 			}
 			// collision with coins
-			if (sonic.getGlobalBounds().intersects(coins.getGlobalBounds()) && TileMap[i][j] == 'c' )
+			if (sonic.getGlobalBounds().intersects(coins.getGlobalBounds()) && TileMap[i][j] == 'c')
 			{
 				coin_sound.play();
 				TileMap[i][j] = ' ';
-				Player_Score +=50 ;
+				Player_Score += 50;
 			}
 			// collision with the EndCoin
 			if (sonic.getGlobalBounds().intersects(finishcoin.getGlobalBounds()) && TileMap[i][j] == 'M')
@@ -82,6 +89,14 @@ void Drawing_Map::walkovermap(RenderWindow& window, string TileMap[], Sprite til
 				coin_sound.play();
 				TileMap[i][j] = ' ';
 				Player_Score += 100;
+
+				// score info
+				Best_Score = max(Best_Score,Player_Score); // update best score if the player scored higher
+				InBestScore << Best_Score;
+
+				RenderWindow end(VideoMode(600, 600), "Sonic Adventure", Style::Titlebar);
+				End score(end, Player_Score);
+				window.close();
 			}
 		}
 	}

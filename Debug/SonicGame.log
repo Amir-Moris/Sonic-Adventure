@@ -1,12 +1,6 @@
-﻿  Drawing_Map.cpp
-D:\Amir\projects\SonicGame\SonicGame\Drawing_Map.cpp(50,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Amir\projects\SonicGame\SonicGame\Drawing_Map.cpp(50,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Amir\projects\SonicGame\SonicGame\Drawing_Map.cpp(54,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Amir\projects\SonicGame\SonicGame\Drawing_Map.cpp(54,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Amir\projects\SonicGame\SonicGame\Drawing_Map.cpp(59,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Amir\projects\SonicGame\SonicGame\Drawing_Map.cpp(59,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Amir\projects\SonicGame\SonicGame\Drawing_Map.cpp(64,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Amir\projects\SonicGame\SonicGame\Drawing_Map.cpp(64,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Amir\projects\SonicGame\SonicGame\Drawing_Map.cpp(69,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Amir\projects\SonicGame\SonicGame\Drawing_Map.cpp(69,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  Play_window.cpp
+D:\Amir\projects\SonicGame\SonicGame\Play_window.cpp(55,14): warning C4244: 'initializing': conversion from 'sf::Int64' to 'float', possible loss of data
+D:\Amir\projects\SonicGame\SonicGame\Play_window.cpp(67,22): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Amir\projects\SonicGame\SonicGame\Play_window.cpp(76,22): warning C4305: '+=': truncation from 'double' to 'float'
+D:\Amir\projects\SonicGame\SonicGame\Play_window.cpp(85,16): warning C4305: '=': truncation from 'double' to 'float'
   SonicGame.vcxproj -> D:\Amir\projects\SonicGame\Debug\SonicGame.exe

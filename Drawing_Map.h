@@ -16,8 +16,6 @@ public:
 	Sound coin_sound;
 	SoundBuffer COIN;
 private:
-	int H = 27;
-	int W = 200;
+	int H = 27, W = 200, Best_Score = 0;
 
-	
 };
